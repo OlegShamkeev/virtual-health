@@ -20,10 +20,10 @@ public class SuperheroPojo {
     private String city;
     private String phone;
     private String fullName;
-    @JsonSerialize(using = IdSerializer.class)
-    private int id;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonDeserialize(using = DateDeserializer.class)
-    @JsonSerialize(using = DateSerilizer.class)
-    private LocalDate birthDate;
+    //@JsonSerialize(using = IdSerializer.class)
+    private String id;
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    //@JsonDeserialize(using = DateDeserializer.class)
+    //@JsonSerialize(using = DateSerilizer.class)
+    private String birthDate;
 }
