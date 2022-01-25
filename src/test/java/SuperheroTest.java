@@ -43,8 +43,13 @@ public class SuperheroTest {
         errorResponse = api.superhero.createSuperhero(newOne, 400, ErrorPojo.class); // API should return error to id value as String
         assertThat(errorResponse.getMessage()).contains(randomId);
 
-        //check correct create superhero
+        //attempt to create superhero without mandatory field city
         newOne.setId("");
+        newOne.setCity("");
+        errorResponse = api.superhero.createSuperhero(newOne, 403, ErrorPojo.class);
+
+        //check correct create superhero
+        newOne.setCity(api.faker.regexify("[a-zA-Z0-9]{10}"));
         SuperheroPojo response = api.superhero.createSuperhero(newOne, 200, SuperheroPojo.class);
         assertThat(response).usingRecursiveComparison().ignoringFields("id").isEqualTo(newOne); //API contains bug field phone!
 
